@@ -9,9 +9,12 @@
 require 'faker'
 
 # Destroy any previous users or cities in the db
-# User.destroy_all
 # City.destroy_all
+# User.destroy_all
+# Gossip.destroy_all
 # Tag.destroy_all
+# JoinTableGossipTag.destroy_all
+# PrivateMessage.destroy_all
 
 # Generate 10 random cities with Faker
 # 10.times do
@@ -39,6 +42,11 @@ require 'faker'
 # end
 
 # Generate 5 private messages and give each one a sender and recipient
-5.times do 
-  pm = PrivateMessage.create!(content: Faker::Hipster.sentence(word_count: 10), recipient_id: Faker::Number.within(range:1..10), sender_id: Faker::Number.within(range:1..10))
+# 5.times do 
+#   pm = PrivateMessage.create!(content: Faker::Hipster.sentence(word_count: 10), recipient_id: Faker::Number.within(range:1..10), sender_id: Faker::Number.within(range:1..10))
+# end
+
+# Generate 20 comments with Faker and link them to their author and gossip
+20.times do
+  comment = Comment.create!(content: Faker::Hipster.sentence(word_count: 10), user_id: Faker::Number.within(range:1..10), gossip_id: Faker::Number.within(range:1..20))
 end
