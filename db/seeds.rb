@@ -11,6 +11,7 @@ require 'faker'
 # Destroy any previous users or cities in the db
 # User.destroy_all
 # City.destroy_all
+# Tag.destroy_all
 
 # Generate 10 random cities with Faker
 # 10.times do
@@ -23,6 +24,15 @@ require 'faker'
 # end
 
 # Generate 20 random gossips and link them to their authors
-20.times do
-  gossip = Gossip.create!(title: Faker::Hipster.sentence(word_count: 3), content: Faker::Hipster.sentence(word_count: 10), user_id: Faker::Number.within(range:1..10))
+# 20.times do
+#   gossip = Gossip.create!(title: Faker::Hipster.sentence(word_count: 3), content: Faker::Hipster.sentence(word_count: 10), user_id: Faker::Number.within(range:1..10))
+# end
+
+# Generate 10 tags with Faker
+# 10.times do 
+#   tag = Tag.create!(title: Faker::Hipster.word)
+# end
+
+Gossip.all.each do |gossip|
+  gossip_tag = JoinTableGossipTag.create!(gossip_id: gossip.id, tag_id: Faker::Number.within(range:21..30))
 end
