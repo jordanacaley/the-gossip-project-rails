@@ -33,6 +33,12 @@ require 'faker'
 #   tag = Tag.create!(title: Faker::Hipster.word)
 # end
 
-Gossip.all.each do |gossip|
-  gossip_tag = JoinTableGossipTag.create!(gossip_id: gossip.id, tag_id: Faker::Number.within(range:21..30))
+# Give each gossip a random tag
+# Gossip.all.each do |gossip|
+#   gossip_tag = JoinTableGossipTag.create!(gossip_id: gossip.id, tag_id: Faker::Number.within(range:21..30))
+# end
+
+# Generate 5 private messages and give each one a sender and recipient
+5.times do 
+  pm = PrivateMessage.create!(content: Faker::Hipster.sentence(word_count: 10), recipient_id: Faker::Number.within(range:1..10), sender_id: Faker::Number.within(range:1..10))
 end
