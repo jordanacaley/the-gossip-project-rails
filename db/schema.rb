@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_160905) do
+ActiveRecord::Schema.define(version: 2021_02_12_164456) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 2021_02_12_160905) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["gossip_id"], name: "index_comments_on_gossip_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "comments_on_comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.string "imageable_type"
+    t.integer "imageable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_comments_on_comments_on_imageable"
+    t.index ["user_id"], name: "index_comments_on_comments_on_user_id"
   end
 
   create_table "gossips", force: :cascade do |t|
