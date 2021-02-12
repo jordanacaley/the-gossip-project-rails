@@ -15,6 +15,8 @@ require 'faker'
 # Tag.destroy_all
 # JoinTableGossipTag.destroy_all
 # PrivateMessage.destroy_all
+# Comment.destroy_all
+# Like.destroy_all
 
 # Generate 10 random cities with Faker
 # 10.times do
@@ -47,6 +49,14 @@ require 'faker'
 # end
 
 # Generate 20 comments with Faker and link them to their author and gossip
-20.times do
-  comment = Comment.create!(content: Faker::Hipster.sentence(word_count: 10), user_id: Faker::Number.within(range:1..10), gossip_id: Faker::Number.within(range:1..20))
+# 20.times do
+#   comment = Comment.create!(content: Faker::Hipster.sentence(word_count: 10), user_id: Faker::Number.within(range:1..10), gossip_id: Faker::Number.within(range:1..20))
+# end
+
+# Genereate 20 likes with Faker and randomly put them on gossips and comments
+10.times do
+  like = Like.create!(user_id: Faker::Number.within(range:1..10), gossip_id: Faker::Number.within(range:1..20))
+end
+10.times do
+  like = Like.create!(user_id: Faker::Number.within(range:1..10), comment_id: Faker::Number.within(range:1..20))
 end
